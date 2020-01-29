@@ -9,7 +9,6 @@
 /********* FUNCTION DECLARATION *********/
 bool is_empty(FILE *fp);
 void rm_comments(FILE *ifp, FILE *ofp);
-void rm_comments_mul(FILE *ifp, FILE *ofp);
 
 /********* MAIN STARTS HERE *********/
 int main(int argc, char **argv)
@@ -38,6 +37,9 @@ int main(int argc, char **argv)
     ofp = fopen(ofile, "w");
 
     rm_comments(ifp, ofp);
+
+    fclose(ifp);
+    fclose(ofp);
 
     exit(0);
 }
@@ -114,9 +116,6 @@ void rm_comments(FILE *ifp, FILE *ofp)
             fprintf(ofp, "%s\n", outline);
         }
     }
-
-    fclose(ifp);
-    fclose(ofp);
 
     return ;
 }
